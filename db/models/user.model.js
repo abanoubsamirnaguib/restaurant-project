@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 
 
-const userSchema = new mongoose.Schema({   
+const userSchema = new mongoose.Schema({
     name: {
         type: String,
         trim: true,
@@ -13,6 +13,13 @@ const userSchema = new mongoose.Schema({
         minlength: 2,
         maxlength: 25
     },
+    address: [{
+        type: String,
+        trim: true,
+        required: true,
+        minlength: 5,
+        maxlength: 50
+    }],
     email: {
         type: String,
         trim: true,
@@ -24,15 +31,17 @@ const userSchema = new mongoose.Schema({
                 throw new Error("invalid email format")
         }
     },
-    phone: {
-        type: String,
-        trim: true,
-        required: true,
-        validate(value) {
-            if (!validator.isMobilePhone(value, ['ar-EG']))
-                throw new Error("invalid phone number")
+    phone: [
+        {
+            type: String,
+            trim: true,
+            required: true,
+            validate(value) {
+                if (!validator.isMobilePhone(value, ['ar-EG']))
+                    throw new Error("invalid phone number")
+            }
         }
-    },
+    ],
     password: {
         type: String,
         trim: true,
@@ -44,31 +53,42 @@ const userSchema = new mongoose.Schema({
                 throw new Error('week password')
         }
     },
-    age: {
-        type: Number,
-        min: 21,
-        max: 60
-    },
-    image: {
-        type: String,
-        trim: true
-    },
+    orders: [
+        {
+            _id: mongoose.Schema.Types.ObjectId,
+            foodName: { type: String, required: true },
+            price: { type: Number, required: true },
+            quantity: { type: Number, required: true },
+            totalPrice: { type: Number, required: true }
+        }
+    ],
+    carts: [
+        {
+            _id: mongoose.Schema.Types.ObjectId,
+            foodName: { type: String, required: true },
+            price: { type: Number, required: true },
+            quantity: { type: Number, required: true },
+            totalPrice: { type: Number, required: true }
+        }
+    ],
     gender: {
         type: String,
         trim: true,
         enum: ['male', 'female']
     },
-    status: {
-        type: Boolean,
-        default: false
-    },
+    type: {
+        type: String,
+        trim: true,
+        enum: ['user', 'admin']
+    }
+    ,
     tokens: [
         { token: { type: String } }
     ]
 },
     { timestamps: true })
 
-userSchema.methods.toJSON = function() {
+userSchema.methods.toJSON = function () {
     let user = this.toObject()
     delete user.password
     delete user.__v
@@ -93,7 +113,7 @@ userSchema.statics.loginUser = async (email, password) => {
 userSchema.methods.generatetoken = async function () {
     const user = this
     const token = jwt.sign({ _id: user._id }, "g16")
-    user.tokens = user.tokens.concat({token})
+    user.tokens = user.tokens.concat({ token })
     await user.save()
     return token
 }
