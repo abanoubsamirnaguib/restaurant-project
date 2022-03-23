@@ -1,0 +1,29 @@
+admin
+- table food
+- orders 
+- users 
+- offers
+- *needs
+- info 
+
+user
+- shop foods 
+- one food
+- register/login
+- cart
+- menu 
+- reviews
+- contact
+- about
+- *gallery
+
+
+db
+- food
+image , name , disc , price , category , rate , comments[{}] , likes , adds [{}]
+
+- user 
+name , email , phone , orders[{}] , carts[{}]
+
+- info 
+phone , email , adress , workTime , weekend , about
