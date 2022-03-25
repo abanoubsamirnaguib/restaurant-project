@@ -59,7 +59,8 @@ const userSchema = new mongoose.Schema({
             foodName: { type: String, required: true },
             price: { type: Number, required: true },
             quantity: { type: Number, required: true },
-            totalPrice: { type: Number, required: true }
+            totalPrice: { type: Number, required: true },
+            required:false
         }
     ],
     carts: [
@@ -68,7 +69,8 @@ const userSchema = new mongoose.Schema({
             foodName: { type: String, required: true },
             price: { type: Number, required: true },
             quantity: { type: Number, required: true },
-            totalPrice: { type: Number, required: true }
+            totalPrice: { type: Number, required: true },
+            required:false
         }
     ],
     gender: {
@@ -76,12 +78,11 @@ const userSchema = new mongoose.Schema({
         trim: true,
         enum: ['male', 'female']
     },
-    type: {
-        type: String,
-        trim: true,
-        enum: ['user', 'admin']
-    }
-    ,
+    // type: {
+    //     type: String,
+    //     trim: true,
+    //     enum: ['user', 'admin']
+    // },
     tokens: [
         { token: { type: String } }
     ]
@@ -92,6 +93,7 @@ userSchema.methods.toJSON = function () {
     let user = this.toObject()
     delete user.password
     delete user.__v
+    // delete user.tokens
     return user
 }
 

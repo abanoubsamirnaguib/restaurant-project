@@ -9,14 +9,14 @@ const staticurl = path.join("../uploads")
 app.use(express.static(staticurl))
 
 const adminRoutes = require("../routes/admin/admin.routes")
-const webRoutes = require("../routes/web/user.routes")
+const userRoutes = require("../routes/web/user.routes")
 
 
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 
-app.use("/admin/", adminRoutes)
-app.use("/web/", webRoutes)
+app.use(adminRoutes)
+app.use(userRoutes)
 
 app.get('*', (req,res)=> res.status(404).send({ 
     apiStatus: false, 

@@ -1,14 +1,21 @@
 const userController = require("../../controller/web/user.controller")
 const router = require("express").Router()
+const auth = require("../../middleware/auth")
+const upload = require("../../middleware/fileupload")
 
+// userDetails
+router.post("/register", userController.add)
+router.post("/login", userController.login)
+router.get("/me",auth, userController.profile)
+router.patch('/edit/',auth ,userController.editWithToken)
 
+router.post("/logout",auth, userController.logOut)
+router.post("/logoutAll",auth, userController.logOutAll)
+router.post("/changePass",auth, userController.changePass)
+router.delete('/delete',auth, userController.del)
 
-// router.post("/register", userController.add)
-// router.post("/login", userController.login)
-// router.post("/all", userController.all)
-// router.post("/all/:id", userController.single)
+// router.post("/me",auth, userController.profile)
 
-// router.delete('/all/:id', userController.del)
-// router.patch('/all/:id', userController.edit)
+// foodDetails
 
 module.exports = router

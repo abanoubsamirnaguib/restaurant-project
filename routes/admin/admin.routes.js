@@ -1,6 +1,10 @@
-const Router = require("express").Router();
+const router = require("express").Router();
 const adminController = require("../../controller/admin/admin.controller");
+const userController = require("../../controller/web/user.controller");
 
-// router.post("/register", userController.add)
+router.get("/all", adminController.all)
+router.get("/user/:id", adminController.single)
+router.patch('/edit/:id', adminController.edit)
+router.delete('/delete/:id', adminController.del)
 
-module.exports = Router;
+module.exports = router;
