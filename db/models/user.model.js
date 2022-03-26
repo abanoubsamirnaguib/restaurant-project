@@ -3,6 +3,7 @@ const mongoose = require("mongoose")
 const validator = require("validator")
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
+const { array } = require("../../middleware/fileupload")
 
 
 const userSchema = new mongoose.Schema({
@@ -53,24 +54,21 @@ const userSchema = new mongoose.Schema({
                 throw new Error('week password')
         }
     },
-    orders: [
-        {
-            _id: mongoose.Schema.Types.ObjectId,
+    orders: [{
+        orderStatus:{type: Boolean},
+        details:  [{
             foodName: { type: String, required: true },
             price: { type: Number, required: true },
             quantity: { type: Number, required: true },
-            totalPrice: { type: Number, required: true },
-            required:false
-        }
-    ],
+            totalPrice: { type: Number, required: true }
+        }]
+    }],
     carts: [
         {
-            _id: mongoose.Schema.Types.ObjectId,
             foodName: { type: String, required: true },
             price: { type: Number, required: true },
             quantity: { type: Number, required: true },
             totalPrice: { type: Number, required: true },
-            required:false
         }
     ],
     gender: {

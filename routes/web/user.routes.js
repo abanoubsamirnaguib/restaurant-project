@@ -14,8 +14,10 @@ router.post("/logoutAll",auth, userController.logOutAll)
 router.post("/changePass",auth, userController.changePass)
 router.delete('/delete',auth, userController.del)
 
-// router.post("/me",auth, userController.profile)
-
 // foodDetails
+router.post('/addToCart',auth, userController.AddToCart)
+router.delete('/delFromCart/:cartId',auth, userController.delFromCart)
+router.post('/AddToOrder',auth, userController.AddToOrder)
+
 
 module.exports = router

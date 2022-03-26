@@ -4,7 +4,6 @@ class User {
 
     static add = async (req, res) => {
         try {
-            console.log(req.body);
             const user = new userModel(req.body)
             await user.save()
             res.status(200).send({
@@ -58,9 +57,9 @@ class User {
     }
     static editWithToken = async (req, res) => {
         try {
-            if(req.body.password){
+            if (req.body.password) {
                 req.user.password = req.body.password
-                await req.user.save();    
+                await req.user.save();
                 req.body.password = req.user.password
                 // console.log(req.body.password);                                                        
             }
@@ -155,7 +154,71 @@ class User {
         }
 
     }
-
+    // Cart & Order
+    static AddToCart = async (req, res) => {
+        try {
+            req.body.totalPrice = req.body.quantity * req.body.price
+            req.user.carts.push(req.body)
+            // console.log(req.user.carts);
+            await req.user.save()
+            res.status(200).send({
+                apiStatus: true,
+                data: req.user.carts,
+                message: "user added"
+            })
+        }
+        catch (e) {
+            res.status(500).send({
+                apiStatus: false,
+                errors: e.message,
+                message: "error in add to cart"
+            })
+        }
+    }
+    static delFromCart = async (req, res) => {
+        try {
+            req.user.carts = req.user.carts.filter(c => c._id != req.params.cartId)
+            await req.user.save()
+            res.status(200).send({
+                apiStatus: true,
+                data: req.user.carts,
+                message: "user added"
+            })
+        }
+        catch (e) {
+            res.status(500).send({
+                apiStatus: false,
+                errors: e.message,
+                message: "error in add to cart"
+            })
+        }
+    }
+    static AddToOrder = async (req, res) => {
+        try {
+            let order = 
+                {
+                    orderStatus: true,
+                    details: req.user.carts
+                }
+            
+            // req.user.orders=order
+            req.user.orders.push(order)
+            req.user.carts = []
+            await req.user.save()
+            res.status(200).send({
+                apiStatus: true,
+                data: req.user.orders,
+                message: "order added"
+            })
+        }
+        catch (e) {
+            res.status(500).send({
+                apiStatus: false,
+                errors: e.message,
+                message: "error in add to orders"
+            })
+        }
+    }
 
 }
 
