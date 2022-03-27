@@ -78,6 +78,30 @@ class admin {
         }
 
     }
+    static allOrder = async (req, res) => {
+        try {
+            const users = await userModel.find().sort({ email: 1 })
+            let orders=[];
+            users.forEach((user)=>{
+                orders.push({
+                    userName:user.name,
+                    userOrder:user.orders
+                })
+            })
+            res.status(200).send({
+                apiStatus: true,
+                data: orders,
+                message: "orders fetched"
+            })
+        }
+        catch (e) {
+            res.status(500).send({
+                apiStatus: false,
+                errors: e.message,
+                message: "error in fetching orders"
+            })
+        }
+    }
 }
 
 module.exports = admin
