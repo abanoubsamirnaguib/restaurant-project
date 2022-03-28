@@ -154,6 +154,22 @@ class User {
         }
 
     }
+    static changePic = async(req,res)=>{
+       try{ req.user.image = req.file.path
+        await req.user.save()
+        res.status(200).send({
+            apiStatus:true,
+            data: req.file,
+            message:"profile image uploaded"
+        })}
+        catch(e){
+            res.status(500).send({
+                apiStatus:false,
+                data: e.message,
+                message:"erorr in profile image upload"
+            })  
+        }
+    }
     // Cart & Order
     static AddToCart = async (req, res) => {
         try {

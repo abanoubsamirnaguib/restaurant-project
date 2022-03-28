@@ -15,11 +15,11 @@ const storage = multer.diskStorage({
 const upload = multer({
     storage,
     limits: { fieldSize: 20000000 },
-    fileFilter: function (req, file, cb) {
-        if (path.extname(file.originalname) != ".jpeg")
-            return cb(new Error("invalid file extension"))
-        cb(null, true)
-    }
+    // fileFilter: function (req, file, cb) {
+    //     if (path.extname(file.originalname) != ".jpeg")
+    //         return cb(new Error("invalid file extension"))
+    //     cb(null, true)
+    // }
 })
 
 module.exports = upload
