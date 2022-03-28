@@ -81,6 +81,7 @@ const userSchema = new mongoose.Schema({
     //     trim: true,
     //     enum: ['user', 'admin']
     // },
+    image:String,
     tokens: [
         { token: { type: String } }
     ]

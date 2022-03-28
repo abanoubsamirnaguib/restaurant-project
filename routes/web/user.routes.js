@@ -8,6 +8,7 @@ router.post("/register", userController.add)
 router.post("/login", userController.login)
 router.get("/me",auth, userController.profile)
 router.patch('/edit/',auth ,userController.editWithToken)
+router.patch('/changePic/',auth, upload.single("profilePic") ,userController.changePic)
 
 router.post("/logout",auth, userController.logOut)
 router.post("/logoutAll",auth, userController.logOutAll)
