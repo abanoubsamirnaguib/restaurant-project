@@ -98,6 +98,20 @@ catch(e){
 }
 
 }
+ static like =  async(request,response)=> {
+     
+    const food = await foodModel.findById( request.params.id)
+              food.like= food.like+1
+              food.save() 
+
+}
+ static dislike =  async(request,response)=> {
+     const food = await foodModel.findById( request.params.id)
+         food.like= food.like-1
+            food.save()                      
+
+}
+
 
 }
 module.exports = FOOD
