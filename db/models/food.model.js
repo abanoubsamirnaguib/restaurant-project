@@ -25,14 +25,12 @@ const foodSchema = new mongoose.Schema({
         type :Number,
         trim :true ,
     },
-
     category : {
         type : String,
         require: true ,
         enum : ['','',''],
 
     },
-
     rate :{
         type : Number ,
         min:1 ,
@@ -53,13 +51,10 @@ const foodSchema = new mongoose.Schema({
     likes : {
         type : Number,
         trim : true ,
-
     },
 
     adds : [{
         type : String,
-        
-
     }],
 },
 
