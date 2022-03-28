@@ -85,7 +85,7 @@ class admin {
             users.forEach((user)=>{
                 orders.push({
                     userName:user.name,
-                    userOrder:user.orders
+                    userOrders:user.orders
                 })
             })
             res.status(200).send({
