@@ -39,8 +39,7 @@ class User {
         }
     }
     static profile = async (req, res) => {
-        try {
-
+        try {   
             res.status(200).send({
                 apiStatus: true,
                 data: req.user,

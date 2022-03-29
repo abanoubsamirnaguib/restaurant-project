@@ -6,7 +6,7 @@ const upload = require("../../middleware/fileupload")
 // userDetails
 router.post("/register", userController.add)
 router.post("/login", userController.login)
-router.get("/me",auth, userController.profile)
+router.get("/me/:id",auth,  userController.profile)
 router.patch('/edit/',auth ,userController.editWithToken)
 router.patch('/changePic/',auth, upload.single("profilePic") ,userController.changePic)
 
