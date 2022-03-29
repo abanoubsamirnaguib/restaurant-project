@@ -80,7 +80,7 @@ class FOOD {
     }
     static showall = async (request, response) => {
         try {
-            const allfood =await foodModel.find()
+            const allfood = await foodModel.find()
             response.status(200).send({
                 apiStatus: true,
                 data: allfood,
@@ -96,10 +96,29 @@ class FOOD {
         }
 
     }
+    static changePic = async (req, res) => {
+        try {
+            const food = await foodModel.findById(req.params.id)
+            food.image = req.file.path
+            await food.save()
+            res.status(200).send({
+                apiStatus: true,
+                data: req.file,
+                message: "food image uploaded"
+            })
+        }
+        catch (e) {
+            res.status(500).send({
+                apiStatus: false,
+                data: e.message,
+                message: "erorr in food image upload"
+            })
+        }
+    }
     static like = async (request, response) => {
         try {
             const food = await foodModel.findById(request.params.id)
-            if(food.likes==null){food.likes=0}
+            if (food.likes == null) { food.likes = 0 }
             food.likes = food.likes + 1
             await food.save()
             response.status(200).send({
@@ -119,7 +138,7 @@ class FOOD {
     static dislike = async (request, response) => {
         try {
             const food = await foodModel.findById(request.params.id)
-            if(food.likes==null){food.likes=0}
+            if (food.likes == null) { food.likes = 0 }
             food.likes = food.likes - 1
             await food.save()
             response.status(200).send({
@@ -132,7 +151,7 @@ class FOOD {
                 apiStatus: false,
                 errors: error.message,
                 message: "error adding like "
-            }) 
+            })
         }
 
     }
