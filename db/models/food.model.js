@@ -6,7 +6,6 @@ const foodSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
-
     name: {
         type: String,
         trim: true,
@@ -22,12 +21,12 @@ const foodSchema = new mongoose.Schema({
     price: {
         type: Number,
         trim: true,
+        require: true,
     },
     category: {
         type: String,
         require: true,
         enum: ['', '', ''],
-
     },
     rate: {
         type: Number,
@@ -40,24 +39,21 @@ const foodSchema = new mongoose.Schema({
             ref: "User",
             required: true
         },
+        username:String,
         content: {
             type: String,
             require: true,
         }
     }],
-
     likes: {
         type: Number,
         trim: true,
     },
-
     adds: [{
         type: String,
     }],
 },
 
     { timestamps: true })
-
-
 const FOOD = mongoose.model('FOOD', foodSchema)
 module.exports = FOOD
