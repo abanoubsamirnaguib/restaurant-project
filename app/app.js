@@ -1,8 +1,8 @@
+var express = require('express')
+var cors = require('cors')
+var app = express()
 require("dotenv").config()
 require("../db/connectiondb")
-
-const express = require("express");
-const app = express();
 const path = require("path")
 
 const staticurl = path.join("../uploads")
@@ -13,6 +13,7 @@ const adminRoutes = require("../routes/admin/admin.routes")
 const foodRoutes = require("../routes/admin/food.routes")
 
 
+app.use(cors())
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 
