@@ -101,26 +101,9 @@ class FOOD {
     static changePic = async (req, res) => {
         try {
             const food = await foodModel.findById(req.params.id)
+            console.log(food.image);
             food.image = req.file.path
-            await food.save()
-            res.status(200).send({
-                apiStatus: true,
-                data: req.file,
-                message: "food image uploaded"
-            })
-        }
-        catch (e) {
-            res.status(500).send({
-                apiStatus: false,
-                data: e.message,
-                message: "erorr in food image upload"
-            })
-        }
-    }
-    static addPic = async (req, res) => {
-        try {
-            const food = await foodModel.findById(req.params.id)
-            food.image = req.file.path
+            // fs.unlink(req.file.path);
             await food.save()
             res.status(200).send({
                 apiStatus: true,

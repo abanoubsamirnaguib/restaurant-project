@@ -13,6 +13,5 @@ router.post('/like/:id', auth, foodController.like)
 router.post('/dislike/:id', auth, foodController.dislike)
 
 router.patch('/changePic/:id', upload.single("foodfilePic") ,foodController.changePic)
-// router.patch('/addFoodPic', upload.single("foodfilePic") ,foodController.addPic)
 
 module.exports = router;

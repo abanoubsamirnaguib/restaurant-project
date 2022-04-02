@@ -200,14 +200,14 @@ class User {
             res.status(200).send({
                 apiStatus: true,
                 data: req.user.carts,
-                message: "user added"
+                message: "cart deleted"
             })
         }
         catch (e) {
             res.status(500).send({
                 apiStatus: false,
                 errors: e.message,
-                message: "error in add to cart"
+                message: "error in delete from cart"
             })
         }
     }

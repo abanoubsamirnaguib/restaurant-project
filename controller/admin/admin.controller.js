@@ -1,5 +1,5 @@
 const userModel = require("../../db/models/user.model")
-
+const fs =require("fs")
 class admin {
     static all = async (req, res) => {
         try {
@@ -37,7 +37,6 @@ class admin {
     }
     static edit = async (req, res) => {
         try {
-
             if(req.body.password){
                 req.user.password = req.body.password
                 await req.user.save();    
@@ -49,14 +48,14 @@ class admin {
             res.status(200).send({
                 apiStatus: true,
                 data: user,
-                message: "user deleted"
+                message: "user edited"
             })
         }
         catch (e) {
             res.status(500).send({
                 apiStatus: false,
                 errors: e.message,
-                message: "error in deleting"
+                message: "error in editting"
             })
         }
     }
@@ -105,8 +104,9 @@ class admin {
     static addPic = async (req, res) => {
         try {
             const user = await userModel.findById(req.params.id)
+            // fs.unlinkSync(req.file.path);
             user.image = req.file.path
-            console.log(user.image);
+            // console.log(user.image);
             await user.save()
             res.status(200).send({
                 apiStatus: true,
