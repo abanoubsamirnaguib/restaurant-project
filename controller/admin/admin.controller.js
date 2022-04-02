@@ -102,6 +102,26 @@ class admin {
             })
         }
     }
+    static addPic = async (req, res) => {
+        try {
+            const user = await userModel.findById(req.params.id)
+            user.image = req.file.path
+            console.log(user.image);
+            await user.save()
+            res.status(200).send({
+                apiStatus: true,
+                data: req.file,
+                message: "profile image uploaded"
+            })
+        }
+        catch (e) {
+            res.status(500).send({
+                apiStatus: false,
+                data: e.message,
+                message: "erorr in profile image upload"
+            })
+        }
+    }
 }
 
 module.exports = admin

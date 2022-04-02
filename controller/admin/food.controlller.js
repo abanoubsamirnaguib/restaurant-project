@@ -4,6 +4,8 @@ class FOOD {
     static add = async (request, response) => {
         try {
             const food = new foodModel(request.body)
+            // console.log(request);
+            // if(request.File.name) {food.image = 'uploads/'+request.File.name}
             await food.save()
             response.status(200).send({
                 apiStatus: true,
@@ -115,6 +117,26 @@ class FOOD {
             })
         }
     }
+    static addPic = async (req, res) => {
+        try {
+            const food = await foodModel.findById(req.params.id)
+            food.image = req.file.path
+            await food.save()
+            res.status(200).send({
+                apiStatus: true,
+                data: req.file,
+                message: "food image uploaded"
+            })
+        }
+        catch (e) {
+            res.status(500).send({
+                apiStatus: false,
+                data: e.message,
+                message: "erorr in food image upload"
+            })
+        }
+    }
+
     static like = async (request, response) => {
         try {
             const food = await foodModel.findById(request.params.id)

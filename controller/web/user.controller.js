@@ -39,7 +39,7 @@ class User {
         }
     }
     static profile = async (req, res) => {
-        try {   
+        try {
             res.status(200).send({
                 apiStatus: true,
                 data: req.user,
@@ -153,22 +153,25 @@ class User {
         }
 
     }
-    static changePic = async(req,res)=>{
-       try{ req.user.image = req.file.path
-        await req.user.save()
-        res.status(200).send({
-            apiStatus:true,
-            data: req.file,
-            message:"profile image uploaded"
-        })}
-        catch(e){
+    static changePic = async (req, res) => {
+        try {
+            req.user.image = req.file.path
+            await req.user.save()
+            res.status(200).send({
+                apiStatus: true,
+                data: req.file,
+                message: "profile image uploaded"
+            })
+        }
+        catch (e) {
             res.status(500).send({
-                apiStatus:false,
+                apiStatus: false,
                 data: e.message,
-                message:"erorr in profile image upload"
-            })  
+                message: "erorr in profile image upload"
+            })
         }
     }
+
     // Cart & Order
     static AddToCart = async (req, res) => {
         try {
@@ -210,12 +213,12 @@ class User {
     }
     static AddToOrder = async (req, res) => {
         try {
-            let order = 
-                {
-                    orderStatus: true,
-                    details: req.user.carts
-                }
-            
+            let order =
+            {
+                orderStatus: true,
+                details: req.user.carts
+            }
+
             // req.user.orders=order
             req.user.orders.push(order)
             req.user.carts = []
@@ -234,7 +237,7 @@ class User {
             })
         }
     }
-    
+
 }
 
 
