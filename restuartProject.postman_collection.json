@@ -1,0 +1,512 @@
+{
+	"info": {
+		"_postman_id": "f67cef6f-bbd7-43f6-a149-db57bdc87909",
+		"name": "restuartProject",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"name\": \"jojo\",\r\n\"address\":[\"el giza\", \"el fayoum\"],\r\n\"email\": \"abanoub2@gmail.com\",\r\n\"phone\": [\"01234567890\", \"01023456789\"],\r\n\"password\": \"123456\",\r\n\"gender\":\"male\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/register"
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"email\": \"abanoub2@gmail.com\",\r\n\"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/login"
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": "localhost:3000/logout"
+					},
+					"response": []
+				},
+				{
+					"name": "logoutAll",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjNkZTQ3NWFiZTljNGVmM2JiYzFmZGYiLCJpYXQiOjE2NDgyMjQ0MDJ9.j1elAQMUaK6kcxq6nz-E0hRTsz94xmAuJLyCy7IlkBI",
+								"type": "text"
+							}
+						],
+						"url": "localhost:3000/logoutAll"
+					},
+					"response": []
+				},
+				{
+					"name": "profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjNkZTQ3NWFiZTljNGVmM2JiYzFmZGYiLCJpYXQiOjE2NDgyMjQ2MjV9.l7UPTgc_uYgjfXJQaEpO4uBq014zBUL6sfGmT8rAsBg",
+								"type": "text"
+							}
+						],
+						"url": "localhost:3000/me"
+					},
+					"response": []
+				},
+				{
+					"name": "edit",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjNkZTQ3NWFiZTljNGVmM2JiYzFmZGYiLCJpYXQiOjE2NDgyMjQ2MjV9.l7UPTgc_uYgjfXJQaEpO4uBq014zBUL6sfGmT8rAsBg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"name\": \"abanoub1\",\r\n\"address\":[\"el giza\", \"el fayoum \"],\r\n\"phone\": [\"01234567891\", \"01023456789\"],\r\n\"password\":\"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/edit"
+					},
+					"response": []
+				},
+				{
+					"name": "changePass",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjNkZTQ3NWFiZTljNGVmM2JiYzFmZGYiLCJpYXQiOjE2NDgyMjQ2MjV9.l7UPTgc_uYgjfXJQaEpO4uBq014zBUL6sfGmT8rAsBg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"password\":\"1234567\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/changePass"
+					},
+					"response": []
+				},
+				{
+					"name": "addToCart",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjNmMGZmOWNhMmY3YWMwNTUzMGIwMjMiLCJpYXQiOjE2NDgzMDAwMjl9.7D0raiQLeNP1692uOX5ehCR6xRf9OCARkCiKLFBJRas",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjQwZmI0NTMyYmUzZjg0NWM2ZDdlN2EiLCJpYXQiOjE2NDg0MjU4MTB9.dpMBL5koAq_eeLJq-FiD_8abH9c06Tpx1M7HGPSN0zU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n            \"foodName\": \"pizaa 2\",\r\n            \"price\":  20,\r\n            \"quantity\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/addToCart"
+					},
+					"response": []
+				},
+				{
+					"name": "AddToOrder",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjNmMGZmOWNhMmY3YWMwNTUzMGIwMjMiLCJpYXQiOjE2NDgzMDAwMjl9.7D0raiQLeNP1692uOX5ehCR6xRf9OCARkCiKLFBJRas",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjQwZmI0NTMyYmUzZjg0NWM2ZDdlN2EiLCJpYXQiOjE2NDg0MjU4MTB9.dpMBL5koAq_eeLJq-FiD_8abH9c06Tpx1M7HGPSN0zU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/AddToOrder"
+					},
+					"response": []
+				},
+				{
+					"name": "delFromCart",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjNkZTQ3NWFiZTljNGVmM2JiYzFmZGYiLCJpYXQiOjE2NDgyMjQ2MjV9.l7UPTgc_uYgjfXJQaEpO4uBq014zBUL6sfGmT8rAsBg",
+								"type": "text"
+							}
+						],
+						"url": "localhost:3000/delFromCart/623e4ef06d75b8c37e5d7314"
+					},
+					"response": []
+				},
+				{
+					"name": "changePic",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjQwZmI0NTMyYmUzZjg0NWM2ZDdlN2EiLCJpYXQiOjE2NDg0MjU4MTB9.dpMBL5koAq_eeLJq-FiD_8abH9c06Tpx1M7HGPSN0zU",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjNmMGZmOWNhMmY3YWMwNTUzMGIwMjMiLCJpYXQiOjE2NDgzMDAwMjl9.7D0raiQLeNP1692uOX5ehCR6xRf9OCARkCiKLFBJRas",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "profilePic",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": "localhost:3000/changePic"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "admin",
+			"item": [
+				{
+					"name": "allOrder",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:3000/allOrder"
+					},
+					"response": []
+				},
+				{
+					"name": "allUser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:3000/alluser"
+					},
+					"response": []
+				},
+				{
+					"name": "single user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:3000/user/6242da8bc83de63a7213732a"
+					},
+					"response": []
+				},
+				{
+					"name": "editUser",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"address\": [\r\n        \"el giza\",\r\n        \"el fayoum \",\r\n        \"el central\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/editUser/6242da8bc83de63a7213732a"
+					},
+					"response": []
+				},
+				{
+					"name": "delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "localhost:3000/deleteUser/6242da8bc83de63a7213732a"
+					},
+					"response": []
+				},
+				{
+					"name": "info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:3000/info"
+					},
+					"response": []
+				},
+				{
+					"name": "addInfo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phone\":[ \"01245784512\"],\r\n    \"address\": [\r\n    \"el giza\",\r\n    \"el alex\"\r\n],\r\n    \"email\": \"pizza@gmail.com\",\r\n    \"workTime\": \"7 am to 9 pm\",\r\n    \"weeekend\":\"sat , fri\",\r\n    \"about\": \"we are the best pizza in the world\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/addInfo"
+					},
+					"response": []
+				},
+				{
+					"name": "editInfo",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phone\":[ \"01245784512\",\"01025143656\"],\r\n    \"address\": [\r\n    \"el giza \",\r\n    \"el alex \"\r\n],\r\n    \"email\": \"pizza@gmail.com\",\r\n    \"workTime\": \"7 am to 9 pm\",\r\n    \"weeekend\":\"sat , fri\",\r\n    \"about\": \"we are the best pizza in the world\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/editInfo"
+					},
+					"response": []
+				},
+				{
+					"name": "deleteInfo",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "localhost:3000/deleteInfo"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "food",
+			"item": [
+				{
+					"name": "showall",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:3000/food/showall"
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:3000/food/show/62436b73b288ef6fec1dc5f4"
+					},
+					"response": []
+				},
+				{
+					"name": "add Food",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"bad pizza 1\",\r\n    \"descreption\": \"pizza 1 food slices\",\r\n    \"price\": \"30\",\r\n    \"rate\": \"2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/food/add"
+					},
+					"response": []
+				},
+				{
+					"name": "edit",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"super pizza \",\r\n    \"descreption\": \"pizza food slices\",\r\n    \"price\": \"30\",\r\n    \"rate\": \"5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/food/edit/62436b73b288ef6fec1dc5f4"
+					},
+					"response": []
+				},
+				{
+					"name": "change food Pic",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "foodfilePic",
+									"type": "file",
+									"src": "/C:/Users/abano/Downloads/be7c27bf-5e15-4685-99eb-b54dcb705268.jpg"
+								}
+							]
+						},
+						"url": "localhost:3000/food/changePic/62436b73b288ef6fec1dc5f4"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "localhost:3000/food/delete/62437e36712a9e8483f2fbc2"
+					},
+					"response": []
+				},
+				{
+					"name": "AddComment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjQwZmI0NTMyYmUzZjg0NWM2ZDdlN2EiLCJpYXQiOjE2NDg0MjU4MTB9.dpMBL5koAq_eeLJq-FiD_8abH9c06Tpx1M7HGPSN0zU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"content\": \"love pizaa \"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/food/AddComment/62436b73b288ef6fec1dc5f4"
+					},
+					"response": []
+				},
+				{
+					"name": "like",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjQwZmI0NTMyYmUzZjg0NWM2ZDdlN2EiLCJpYXQiOjE2NDg0MjU4MTB9.dpMBL5koAq_eeLJq-FiD_8abH9c06Tpx1M7HGPSN0zU",
+								"type": "text"
+							}
+						],
+						"url": "localhost:3000/food/like/62436b73b288ef6fec1dc5f4"
+					},
+					"response": []
+				},
+				{
+					"name": "dislike",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjQwZmI0NTMyYmUzZjg0NWM2ZDdlN2EiLCJpYXQiOjE2NDg0MjU4MTB9.dpMBL5koAq_eeLJq-FiD_8abH9c06Tpx1M7HGPSN0zU",
+								"type": "text"
+							}
+						],
+						"url": "localhost:3000/food/dislike/62436b73b288ef6fec1dc5f4"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
